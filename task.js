@@ -12,8 +12,9 @@ var Task = function(name){
     }
 }
 
-ClassName.prototype.methodName = function(arguments) {
-
+Task.prototype.complete = function(arguments) {
+    console.log('Completeing Task; ' + this.name);
+        this.completed = true;
 };
 
 var task1 = new Task('Create a demo for constructors');
