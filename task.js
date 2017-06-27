@@ -3,7 +3,7 @@ var Task = function(name){
     this.completed = false;
 
     this.completed = function(){
-        console.log('Completing Task: ' + task.name);
+        console.log('Completing Task: ' + this.name);
         this.completed = true;
     }
 
@@ -11,3 +11,8 @@ var Task = function(name){
         console.log('Saving Task: ' + this.name);
     }
 }
+
+var task1 = new Task('Create a demo for constructors');
+var task2 = new Task('Create a demo for modules');
+var task3 = new Task('Create a demo for singletons');
+var task4 = new Task('Create a demo for prototypes');
