@@ -1,3 +1,4 @@
+
 var Task = function(name){
     this.name = name;
     this.completed = false;
@@ -12,4 +13,4 @@ Task.prototype.save = function() {
     console.log('Saving Task: ' + this.name);
 };
 
-
+module.exports = Task;
