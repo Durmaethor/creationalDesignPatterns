@@ -2,7 +2,7 @@ var Task = function(name){
     this.name = name;
     this.completed = false;
 
-    this.completed = function(){
+    this.complete = function(){
         console.log('Completing Task: ' + this.name);
         this.completed = true;
     }
