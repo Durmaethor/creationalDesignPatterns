@@ -1,18 +1,24 @@
 
 var repo = function(){
 
-    return {
-        get: function(id){
+    var db = {};
+
+    var get = function(id){
             console.log('Getting Task ' + id);
             return {
                 name: 'New task from db'
             }
-        },
-        save: function(task) {
+        }
+        
+        var save = function(task) {
             console.log('Saving ' + task.name + ' to the db');
         }
-    }
 
+        return {  // revealing module pattern layout
+            get: get,
+            save: save
+        }
+    
 
 }
 
