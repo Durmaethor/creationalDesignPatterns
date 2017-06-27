@@ -5,6 +5,7 @@ var repoFactory = function() {
 
         if(repoType === 'task') {
             if(this.taskRepo) {
+                console.log('Retrieving from cache');
                 return this.taskRepo;
             } else {
                 this.taskRepo = require('./taskRepository')();
