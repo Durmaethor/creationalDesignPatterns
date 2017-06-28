@@ -14,7 +14,8 @@ var repo = function(){
             console.log('Saving ' + task.name + ' to the db');
         }
 
-        return {  // revealing module pattern layout
+        console.log('Newing up a task repo');
+        return {  
             get: get,
             save: save
         }
