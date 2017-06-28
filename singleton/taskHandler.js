@@ -1,7 +1,5 @@
 
-var repo = require('./repo');
-
-var myrepo = repo();
+var myrepo = require('./repo');
 
 var taskHandler = function() {
     return {
