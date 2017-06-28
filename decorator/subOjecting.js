@@ -24,6 +24,17 @@ var UrgentTask = function(name, priority) {
 
 UrgentTask.prototype = Object.create(Task.prototype); // Creates a new object out of the Task object
 
+UrgentTask.prototype.notify = function() {
+    console.log('Notifying important people');
+};
+
+UrgentTask.prototype.save = function() {
+    this.notify();
+    console.log('Do special stuff before saving');
+    Task.prototype.save.call(this)
+};
+
 var ut = new UrgentTask('This is urgent', 1);
 ut.complete();
+ut.save();
 console.log(ut);
