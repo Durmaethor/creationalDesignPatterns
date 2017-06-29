@@ -24,4 +24,8 @@ var auditingService = function() { // This is an OBSERVER
 
 var task1 = new Task({name: 'Create a demo for constructors', user: 'Ryan'});
 
+var not = new notificationService();
+var ls = new loggingService();
+var audit = new auditingService();
+
 task1.save();
