@@ -36,6 +36,10 @@ ObserverList.prototype.get = function (index) {
     }
 };
 
+ObserverList.prototype.count = function() {
+    return this.observerList.length;
+};
+
 var ObservableTask = function (data) {
     Task.call(this, data);
     this.observers = new ObserverList();
@@ -44,6 +48,13 @@ var ObservableTask = function (data) {
 ObservableTask.prototype.addObserver = function (observer) {
     this.observers.add(observer);
 };
+
+ObservableTask.prototype.notify = function(context) {
+    var observerCount = this.observers.count();
+    for(var i=0; i < observerCount; i++) {
+        this.observers.get(i)(context);
+    }
+}
 
 var task1 = new Task({name: 'Create a demo for constructors', user: 'Ryan'});
 
