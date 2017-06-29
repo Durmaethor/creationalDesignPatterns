@@ -8,11 +8,15 @@ var Task = function (data) {
     // this.completed = data.completed;
 }
 
+Task.prototype.getPriority = function () {
+    this.flyweight.priority;
+};
+
 function Flyweight(project, priority, user, completed) {
-    this.priority = data.priority;
-    this.project = data.project;
-    this.user = data.user;
-    this.completed = data.completed;
+    this.priority = priority;
+    this.project = project;
+    this.user = user;
+    this.completed = completed;
 };
 
 // FIX HEAVY MEMORY USAGE BY ADDING A FLYWEIGHT FACTORY
@@ -23,7 +27,7 @@ var FlyweightFactory = function() {
     var get = function (project, priority, user, completed) { // takes everything that is NOT unique and adds it to the flyweights or returns the existing
         if (!flyweights[project + priority + user + completed]) {
             flyweights[project + priority + user + completed] = 
-                new FlyWeight(project, priority, user, completed);
+                new Flyweight(project, priority, user, completed);
         }
         return flyweights[project + priority + user + completed];
     };
@@ -93,3 +97,6 @@ console.log("flyweights: " + FlyweightFactory.getCount());
 
 // MEMORY USAGE FOR 1000000 tasks W/ flyweights:
 
+// used memory 261.538848
+// tasks: 1000000
+// flyweights: 160
