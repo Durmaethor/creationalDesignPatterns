@@ -1,5 +1,7 @@
 
 var repo = {
+    tasks: {},
+    commands: [],
     get: function(id) {
         console.log('Getting task ' + id);
         return {
@@ -7,6 +9,7 @@ var repo = {
         }
     },
     save: function(task) {
+        repo.tasks[task.id] = task;
         console.log('Saving ' + task.name + ' to the db');
     }
 
@@ -15,8 +18,37 @@ var repo = {
 repo.execute = function(name) {
     var args = Array.prototype.slice.call(arguments, 1);
 
+    repo.commands.push({
+        name: name,
+        obj: args[0]
+    });
+
     if(repo[name]) {
         return repo[name].apply(repo, args)
     }
     return false;
 };
+
+repo.execute('save', {
+    id:1,
+    name: 'Task 1',
+    completed: false
+});
+
+repo.execute('save', {
+    id:2,
+    name: 'Task 2',
+    completed: false
+});
+
+repo.execute('save', {
+    id:3,
+    name: 'Task 3',
+    completed: false
+});
+
+repo.execute('save', {
+    id:4,
+    name: 'Task 4',
+    completed: false
+});
