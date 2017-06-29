@@ -12,7 +12,13 @@ var FlyWeightFactory = function() {
     
     var flyweights = {};
 
-
+    var get = function (project, priority, user, completed) {
+        if (!flyweights[project + priority + user + completed]) {
+            flyweights[project + priority + user + completed] = 
+                new FlyWeight(project, priority, user, completed);
+        }
+        return flyweights[project + priority + user + completed];
+    };
 }()
 
 function TaskCollection() {
