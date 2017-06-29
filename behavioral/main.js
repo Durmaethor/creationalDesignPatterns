@@ -56,10 +56,19 @@ ObservableTask.prototype.notify = function(context) {
     }
 }
 
-var task1 = new Task({name: 'Create a demo for constructors', user: 'Ryan'});
+ObservableTask.prototype.save = function() {
+    this.notify(this);
+    Task.prototype.save.call(this);
+};
+
+var task1 = new ObservableTask({name: 'Create a demo for constructors', user: 'Ryan'});
 
 var not = new notificationService();
 var ls = new loggingService();
 var audit = new auditingService();
+
+task1.addObserver(not.update);
+task1.addObserver(ls.update);
+task1.addObserver(audit.update);
 
 task1.save();
