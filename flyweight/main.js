@@ -7,6 +7,14 @@ var Task = function (data) {
     this.completed = data.completed;
 }
 
+// FIX HEAVY MEMORY USAGE BY ADDING A FLYWEIGHT FACTORY
+var FlyWeightFactory = function() {
+    
+    var flyweights = {};
+
+
+}()
+
 function TaskCollection() {
     var tasks = {};
     var count = 0;
