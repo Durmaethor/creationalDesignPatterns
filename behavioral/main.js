@@ -40,13 +40,33 @@ ObserverList.prototype.count = function() {
     return this.observerList.length;
 };
 
+ObserverList.prototype.removeAt = function(index) {
+    this.observerList.splice(index, 1);
+};
+
+ObserverList.prototype.indexOf = function (obj, startIndex) {
+    var i = startIndex;
+
+    while (i < this.observerList.length) {
+        if(this.observerList[i] === obj) {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}
+
 var ObservableTask = function (data) {
     Task.call(this, data);
     this.observers = new ObserverList();
-}
+};
 
 ObservableTask.prototype.addObserver = function (observer) {
     this.observers.add(observer);
+};
+
+ObservableTask.prototype.removeObserver = function (observer) {
+    this.observers.removeAt(this.observers.indexOf(observer, 0));
 };
 
 ObservableTask.prototype.notify = function(context) {
@@ -71,4 +91,7 @@ task1.addObserver(not.update);
 task1.addObserver(ls.update);
 task1.addObserver(audit.update);
 
+task1.save();
+
+task1.removeObserver(audit.update);
 task1.save();
