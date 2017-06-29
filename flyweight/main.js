@@ -41,6 +41,8 @@ for (var i = 0; i < 10000; i++) {
     tasks.add({
         name: 'task' + i,
         priority: priorities[Math.floor((Math.random() * 5))],
-        
-    })
-}
+        project: projects[Math.floor((Math.random() * 4))],
+        user: users[Math.floor((Math.random() * 4))],
+        completed: completed[Math.floor((Math.random() * 2))]
+    });
+};
