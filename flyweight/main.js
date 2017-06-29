@@ -1,5 +1,6 @@
 
 var Task = function (data) {
+    this.flyweight = FlyweightFactory.get(data.project, data.priority, data.user, data.completed);
     this.name = data.name;
     // this.priority = data.priority;
     // this.project = data.project;
@@ -26,6 +27,15 @@ var FlyweightFactory = function() {
         }
         return flyweights[project + priority + user + completed];
     };
+    var  getCount = function () {
+        var count = 0;
+        for (var f in flyweights) count++;
+        return count;
+    }
+    return {
+        get: get, 
+        getCount: getCount
+    }
 }()
 
 function TaskCollection() {
@@ -72,3 +82,4 @@ var afterMemory = process.memoryUsage().heapUsed;
 console.log('used memory ' + (afterMemory - initialMemory) / 1000000); // process the memory used after the tasks are created
 
 console.log("tasks: " + tasks.getCount());
+console.log("flyweights: " + FlyweightFactory.getCount());
