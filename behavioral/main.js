@@ -36,6 +36,15 @@ ObserverList.prototype.get = function (index) {
     }
 };
 
+var ObservableTask = function (data) {
+    Task.call(this, data);
+    this.observers = new ObserverList();
+}
+
+ObservableTask.prototype.addObserver = function (observer) {
+    this.observers.add(observer);
+};
+
 var task1 = new Task({name: 'Create a demo for constructors', user: 'Ryan'});
 
 var not = new notificationService();
