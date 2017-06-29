@@ -2,21 +2,21 @@
 var Task = require('./task');
 
 // Service notifications and updates
-var notificationService = function() { // This is an OBSERVER 
+var notificationService = function() {  
     var message = 'Notifying ';
     this.update = function (task) {
         console.log(message + task.user + ' for task ' + task.name);
     }
 }
 
-var loggingService = function() {  // This is an OBSERVER 
+var loggingService = function() {  
     var message = 'Logging ';
     this.update = function (task) {
         console.log(message + task.user + ' for task ' + task.name);
     }
 }
 
-var auditingService = function() { // This is an OBSERVER
+var auditingService = function() { 
     var message = 'Auditing ';
     this.update = function (task) {
         console.log(message + task.user + ' for task ' + task.name);
