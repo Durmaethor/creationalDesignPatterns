@@ -1,18 +1,25 @@
 
 var Task = function (data) {
     this.name = data.name;
+    // this.priority = data.priority;
+    // this.project = data.project;
+    // this.user = data.user;
+    // this.completed = data.completed;
+}
+
+function Flyweight(project, priority, user, completed) {
     this.priority = data.priority;
     this.project = data.project;
     this.user = data.user;
     this.completed = data.completed;
-}
+};
 
 // FIX HEAVY MEMORY USAGE BY ADDING A FLYWEIGHT FACTORY
 var FlyweightFactory = function() {
     
     var flyweights = {}; // this is the "collection" object
 
-    var get = function (project, priority, user, completed) {
+    var get = function (project, priority, user, completed) { // takes everything that is NOT unique and adds it to the flyweights or returns the existing
         if (!flyweights[project + priority + user + completed]) {
             flyweights[project + priority + user + completed] = 
                 new FlyWeight(project, priority, user, completed);
