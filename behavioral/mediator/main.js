@@ -65,3 +65,10 @@ var task1 = new Task({
 var not = new notificationService();
 var ls = new loggingService();
 var audit = new auditingService();
+
+// Add things to the mediator (create channels)
+mediator.subscribe('complete', not, not.update);
+mediator.subscribe('complete', ls, ls.update);
+mediator.subscribe('complete', audit, audit.update);
+
+task1.save();
