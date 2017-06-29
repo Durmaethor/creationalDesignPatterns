@@ -35,9 +35,9 @@ var priorities = [1,2,3,4,5];
 var users = ['Ryan', 'Cassie', 'Ron', 'Debby'];
 var completed = [true, false];
 
-var initialMemory = process.memoryUsage().heapUsed;
+var initialMemory = process.memoryUsage().heapUsed; // pull in initial memory usage
 
-for (var i = 0; i < 10000; i++) {
+for (var i = 0; i < 10000; i++) { // create 10000 tasks
     tasks.add({
         name: 'task' + i,
         priority: priorities[Math.floor((Math.random() * 5))],
@@ -46,3 +46,8 @@ for (var i = 0; i < 10000; i++) {
         completed: completed[Math.floor((Math.random() * 2))]
     });
 };
+
+var afterMemory = process.memoryUsage().heapUsed;
+console.log('used memory ' + (afterMemory - initialMemory) / 1000000); // process the memory used after the tasks are created
+
+console.log("tasks: " + tasks.getCount());
