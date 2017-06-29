@@ -29,3 +29,18 @@ function TaskCollection() {
 }
 
 var tasks = new TaskCollection();
+
+var projects = ['none', 'courses', 'training', 'project'];
+var priorities = [1,2,3,4,5];
+var users = ['Ryan', 'Cassie', 'Ron', 'Debby'];
+var completed = [true, false];
+
+var initialMemory = process.memoryUsage().heapUsed;
+
+for (var i = 0; i < 10000; i++) {
+    tasks.add({
+        name: 'task' + i,
+        priority: priorities[Math.floor((Math.random() * 5))],
+        
+    })
+}
