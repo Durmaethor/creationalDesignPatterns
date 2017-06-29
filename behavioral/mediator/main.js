@@ -71,4 +71,9 @@ mediator.subscribe('complete', not, not.update);
 mediator.subscribe('complete', ls, ls.update);
 mediator.subscribe('complete', audit, audit.update);
 
-task1.save();
+task1.complete = function() {
+    mediator.publish('complete', this);
+    task1.prototype.complete.call(this);
+}
+
+task1.complete();
