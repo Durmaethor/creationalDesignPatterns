@@ -22,6 +22,20 @@ var auditingService = function() { // This is an OBSERVER
     }
 }
 
+function ObserverList() {
+    this.observerList = [];
+};
+
+ObserverList.prototype.add = function (obj) {
+    return this.observerList.push(obj);
+};
+
+ObserverList.prototype.get = function (index) {
+    if(index > -1 && index < this.observerList.length) {
+        return this.observerList[index];
+    }
+};
+
 var task1 = new Task({name: 'Create a demo for constructors', user: 'Ryan'});
 
 var not = new notificationService();
