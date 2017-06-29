@@ -11,8 +11,23 @@ var repo = {
     save: function(task) {
         repo.tasks[task.id] = task;
         console.log('Saving ' + task.name + ' to the db');
+    },
+    replay: function() {
+        for(var i = 0; i < repo.commands.length; i++) {
+            var command = repo.commands[i];
+
+            repo.executeNoLog(command.name, command.obj)
+        }
     }
 
+}
+
+repo.executeNoLog = function(name) {
+
+    var args = Array.prototype.slice.call(arguments, 1);
+    if(repo[name]) {
+        return repo[name].apply(repo, args)
+    }
 }
 
 repo.execute = function(name) {
@@ -53,4 +68,9 @@ repo.execute('save', {
     completed: false
 });
 
+console.log(repo.tasks);
+repo.tasks = {}; // Empties everything out!
+console.log(repo.tasks);
+
+repo.replay();
 console.log(repo.tasks);
