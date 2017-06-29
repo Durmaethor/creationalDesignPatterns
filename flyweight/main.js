@@ -68,7 +68,7 @@ var completed = [true, false];
 
 var initialMemory = process.memoryUsage().heapUsed; // pull in initial memory usage
 
-for (var i = 0; i < 10000; i++) { // create 10000 tasks
+for (var i = 0; i < 1000000; i++) { // create 10000 tasks
     tasks.add({
         name: 'task' + i,
         priority: priorities[Math.floor((Math.random() * 5))],
@@ -83,3 +83,13 @@ console.log('used memory ' + (afterMemory - initialMemory) / 1000000); // proces
 
 console.log("tasks: " + tasks.getCount());
 console.log("flyweights: " + FlyweightFactory.getCount());
+
+
+// MEMORY USAGE FOR 1000000 tasks w/o flyweights:
+
+// used memory 318.846192
+// tasks: 1000000
+// flyweights: 0
+
+// MEMORY USAGE FOR 1000000 tasks W/ flyweights:
+
