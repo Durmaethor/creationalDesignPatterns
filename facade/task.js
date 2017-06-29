@@ -36,11 +36,11 @@ var TaskServiceWrapper = function() {
                 TaskService.save(myTask);
         }  
     }
-    
+
     return {
         completeAndNotify: completeAndNotify
     }
-}
+}();
 
 var myTask = new Task ({
     name: 'MyTask',
@@ -50,11 +50,6 @@ var myTask = new Task ({
     completed: false
 });
 
-TaskService.complete(myTask);
-if(myTask.completed === true) {
-    TaskService.setCompleteDate(myTask);
-    TaskService.notifyCompletion(myTask, myTask.user);
-    TaskService.save(myTask);
-}
+TaskServiceWrapper.completeAndNotify(myTask);
 
 console.log(myTask);
