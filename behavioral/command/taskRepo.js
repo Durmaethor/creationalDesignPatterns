@@ -52,3 +52,5 @@ repo.execute('save', {
     name: 'Task 4',
     completed: false
 });
+
+console.log(repo.tasks);
