@@ -8,9 +8,9 @@ var Task = function (data) {
 }
 
 // FIX HEAVY MEMORY USAGE BY ADDING A FLYWEIGHT FACTORY
-var FlyWeightFactory = function() {
+var FlyweightFactory = function() {
     
-    var flyweights = {};
+    var flyweights = {}; // this is the "collection" object
 
     var get = function (project, priority, user, completed) {
         if (!flyweights[project + priority + user + completed]) {
