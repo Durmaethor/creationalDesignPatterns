@@ -1,3 +1,4 @@
+
 var Task = function (data) {
     this.name = data.name;
     this.priority = data.priority;
